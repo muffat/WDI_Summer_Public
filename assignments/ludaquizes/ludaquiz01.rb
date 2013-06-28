@@ -53,9 +53,16 @@ def_jam.roster << ludacris
 # How many occupations does Ludacris have?
 ludacris[:occupations].count
 # What number job is 'Rapper'?
+ludacris[:occupations].index('Rapper') + 1
 # How many area codes does Ludacris have?
+ludacris[:hoes].count
 # How many hoes does Ludacris have?
+number_of_hoes = 0
+ludacris[:hoes].each do |x, y|
+  number_of_hoes += y.count
+end
 # How many hoes does Ludacris have in 617?
+ludacris[:hoes]['617'].count
 # List all Ludacris's hoes names
 
 
