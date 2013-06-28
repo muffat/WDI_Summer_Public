@@ -2,7 +2,10 @@
 -- Requires a database called address_book
 -- Run from the terminal with psql -d address_book -f contacts.sql
 DROP TABLE contacts;
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 CREATE TABLE contacts
 (
   id SERIAL PRIMARY KEY,

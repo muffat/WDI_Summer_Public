@@ -37,16 +37,23 @@ post '/contacts' do
   redirect to '/contacts'
 end
 
+post '/contacts/delete' do
+  "concrete shoes"
+  # figure out who to off
+  # write some sql to off them
+  # go someplace
+end
+
 # Make a new contact
 get '/contacts/new' do
   erb :form
 end
 
 # show one specific contact
-get '/contacts/:name' do
-  @user_name = params[:name]
+get '/contacts/:id' do
+  id = params[:id]
   db = PG.connect(:dbname => 'address_book', :host => 'localhost')
-  sql = "SELECT * FROM contacts WHERE first = '#{@user_name}'"
+  sql = "SELECT * FROM contacts WHERE id = #{id}"
   @contact = db.exec(sql).first
   db.close
   erb :contact
