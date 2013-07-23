@@ -1,6 +1,31 @@
 # Homework Assignmets
 
+## Assigned and Resources 07/22/2013
+* In class resources
+ * Phil's [JS fiddle](http://jsfiddle.net/kxZkb/) from this morning.
+ * Phil's [other JS notes](https://github.com/tibbon/WDI_Summer_Public/tree/master/examples/intro_to_js)
+* *Homework* [lab/homework](https://github.com/tibbon/javascript-geometry-function-hw-lab), due 9:00 tomorrow.
+* Readings
+  * Read [Basic Javascript for the impatient programmer](http://www.2ality.com/2013/06/basic-javascript.html) sections 1-10, 15 and 17. 
+  * Watch [JavaScript: The Good Parts](http://www.youtube.com/watch?v=hQVTIJBZook)
+  * Look over various style guides in preparation for discussion on how they are similar/different
+      * [Airbnb](https://github.com/airbnb/javascript)
+      * [Crockford](http://javascript.crockford.com/code.html)
+      * [jQuery](http://contribute.jquery.org/style-guide/js/)
+      * [Node](https://npmjs.org/doc/coding-style.html)
+
+## Resources 07/16/2013
+* [Basic Login Example](https://github.com/tibbon/auth_from_scratch/)
+
+## Resources 07/16/2013
+* [Hogwortz Example](https://github.com/phlco/hogwartz)
+
+## Assigned 07/12/2013
+* Wireframe your project and concetually develop your models 
+
 ## Assigned 07/10/2013
+* [Movie/Actor Homework](https://github.com/clearf/private-imdb).  
+ * instructions on the process for forking, pushing your local repo to the forked repo, and doing a pull request are [here](https://github.com/clearf/private-imdb/blob/master/README.md)
 * Resources
  * Read about [partials](http://guides.rubyonrails.org/v3.2.13/layouts_and_rendering.html#using-partials)
  * Extensions of the "todo" app that we did in class

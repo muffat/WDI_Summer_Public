@@ -23,12 +23,13 @@ class TodosController < ApplicationController
     redirect_to todo
   end
 
-# POST
-# /todos/:id/remove_contact
-# remove_todo_contact_path for linking
+  # POST
+  # /todos/:id/remove_contact
+  # remove_todo_contact_path for linking
   def remove_contact
-    contact = Contact.find(params[:contact_id])
-    todo = Todo.find(params[:id])
+    contact = Contact.find params[:contact_id]
+    todo = Todo.find params[:id]
+
     todo.contacts.destroy(contact)
     redirect_to todo
   end
