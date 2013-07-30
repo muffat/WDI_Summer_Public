@@ -1,42 +1,38 @@
 var word = {
-  secretWord: "",
+  // This is an attribute of the object word.
+  secretWord: "model",
   wordList: ['ruby', 'rails', 'javascript', 'array', 'hash', 'underscore', 'sinatra', 'model', 'controller', 'view', 'devise', 'authentication', 'capybara', 'jasmine', 'cache', 'sublime', 'terminal', 'system', 'twitter', 'facebook', 'function', 'google', 'amazon', 'development', 'data', 'design', 'inheritance', 'prototype', 'gist', 'github', 'agile', 'fizzbuzz', 'route', 'gem', 'deployment', 'database'],
 
+  // START HERE: Step 1
   // Selects a random word from the word list sets the secret word
+  // it will set the secretWord attribute from Line 3
   setSecretWord: function(){
-    var randomIndex = _.random(0, this.wordList.length);
-    this.secretWord = this.wordList[randomIndex];
+    //this.secretWord = this.wordList[Math.floor(Math.random() * this.wordList.length)];
+    this.secretWord = this.wordList[_.random(this.wordList.length - 1)];
   },
 
+  // This feels pretty hard- what can we do to make it easier, or fake it for the moment?
+  // How do we deal with multiple, multiple occurrances of letters (ie. google)?
   // Takes an array of letters as input and returns an array of two items:
-  // 1) A string with the parts of the secret word that have been guessed correctly and underscore for the parts that haven't
-  // 2) An array of all the guessed letters that were not in the secret word
+
+  // 1) A string with the parts of the secret word that have been guessed correctly and an underscore for the parts that haven't
+  // 2) An array of all the guessed letters that were not in the secret word. This is my 'wrongLetters' array
   checkLetters: function(guessedLetters){
-    var targetWord = this.secretWord;
-    var guessedCorrectly = [];
-    // Fills guessedCorrectly array with _'s
-    for (var i = 0; i < targetWord.length; i++) {
-      guessedCorrectly.push("_");
-    }
-    var guessedIncorrectly = [];
-
-    // Iterates through each letter in guessedLetters array.
-    // If a letter in the guessedLetters array appears in targetWord, the _ in guessedCorrectly at that index of targetWord gets replaced with the letter.
-    // If not, the letter gets added to the guessedIncorrectly array.
-    _.each(guessedLetters, function(guessedLetter) {
-      if (_.contains(targetWord, guessedLetter)) {
-        for (var j = 0; j < targetWord.length; j++) {
-          if (targetWord[j] === guessedLetter) {
-            guessedCorrectly[j] = guessedLetter;
-          }
+    // How can I check against 'model'?
+    // I have an array of guessed letters
+    // I have my secret word of 'model'
+    // this.secretWord; => model
+    // guessedLetters; => mq
+    var correct_letters = _.intersection(this.secretWord, guessedLetters);
+    var wrongLetters = [];
+    for(var i = 0; i < guessedLetters.length; i++) {
+      for(var n = 0; n < this.secretWord.length; n++) {
+        if(guessedLetters[i] !== this.secretWord[n]) {
+          wrongLetters.push(guessedLetters[i]);
         }
-      } else {
-        guessedIncorrectly.push(guessedLetter);
       }
-    });
-
-    guessedCorrectly = guessedCorrectly.join("");
-    return [guessedCorrectly, guessedIncorrectly];
+    }
+    return ['m____',wrongLetters];
   }
 };
 
@@ -58,11 +54,13 @@ var player = {
   },
 
   // Check if the player has lost and end the game if so
+  // Assume they've guessed [x,z, k, p, q,s,t,v,7]
+  // How can I test this? Where does wrongLetters come from?
   checkLose: function(wrongLetters){
-    if (wrongLetters.length === this.MAX_GUESSES) {
-      document.getElementById("wordString").innerText = word.secretWord;
-      alert("You lose!");
-    }
+    // if(!checkWin) {
+    //   wrongLetters;
+    // }
+    return wrongLetters.length >= this.MAX_GUESSES;
   }
 };
 
@@ -90,6 +88,14 @@ var game = {
 };
 
 window.onload = function(){
+  console.log(word.secretWord);
+  console.log(word.checkLetters(['m', 'q'])[1]);
+
+  // // Created a losing scenario
+  // console.log(player.checkLose(wrongLettersArray));
+
+  // Created a not yet losing scenario
+  // console.log(player.checkLose(wrongLettersArray));
   // Start a new game
   game.resetGame();
   // Add event listener to the letter input field to grab letters that are guessed
