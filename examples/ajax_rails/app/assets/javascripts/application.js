@@ -8,10 +8,10 @@
 //= require jquery_ujs
 //= require_tree .
 
-// STEP 11: Make a function that takes a task JavaScript object as an argument
+// STEP 11: Note this function that takes a task JavaScript object as an argument
 // This function will generate a DOM version of the task javasctipt object it takes as an argument
 var appendTask = function(task){
-	// Created local variables that hold the jQuery selectors for: 
+	// Created local variables that hold the jQuery selectors for:
 	//     completeButton, deleteButton, actions, taskText, htmlTask
 	// Note the classes on these
 	var completeButton = $('<button class="complete">complete</button>');
@@ -31,17 +31,17 @@ var appendTask = function(task){
 	completeButton.click(function(){
 		$.ajax({
 			// STEP 24: Make the step 15 `.click()` make an ajax call to the `complete` action and set the `dataType` setting to `script`
-		)}
+		})
 	});
 
 	// Handles the click event on the delete button using Ajax
 	deleteButton.click(function(){
 		$.ajax({
 			// Step 30: Make the step 15 `deleteButton.click()` make an ajax call to the `TasksController#destroy` action and set the `dataType` setting to `script`
-		)}
+		})
 	});
 
-	// STEP 13: Set the htmlTask elements `data-id` attribute to the tasks id 
+	// STEP 13: Set the htmlTask elements `data-id` attribute to the tasks id
 	// to make them easy to find for the DOM manipulating ajax response functions
 	// Do this just below here:
 
@@ -66,14 +66,14 @@ $(function(){
 	$('#add-item').click(function(){
 		// STEP 17: Make a javascript JSON object `task` that will have a `name` attribute
 		// We'll use this object to send data to the server
-		// STEP 18: Set the name attribute to the value of the text in the `input` field 
+		// STEP 18: Set the name attribute to the value of the text in the `input` field
 
 		// Don't save tasks with no name
 		if (task.name.length!==0){
 			$.ajax({
 				// STEP 19: Make this click event send a json object to the `create` action using AJAX
 			}).done(function(data){ // Handle the json response
-				// STEP 20: Use the method `console.log` on the result to see that it will return a JavaScript task object after the next steps. 
+				// STEP 20: Use the method `console.log` on the result to see that it will return a JavaScript task object after the next steps.
 				// STEP 23: Rewrite `.done()` method from step 20 to send the response object to the append task function
 			});
 		}

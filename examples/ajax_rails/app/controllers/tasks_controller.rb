@@ -5,6 +5,18 @@ class TasksController < ApplicationController
 	# complete - respond to js
 	# destroy - respond to js
 
+def index
+end
+
+def create
+end
+
+def complete
+end
+
+def destroy
+end
+
 	# STEP 8: Make the index action respond to json requests with json containing the array from `Task.all`
 
 	# STEP 21: In the create action, instantiate a new `Task` object and save filling in the `name` parameter
