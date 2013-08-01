@@ -44,11 +44,12 @@ var appendTask = function(task){
 	// STEP 13: Set the htmlTask elements `data-id` attribute to the tasks id
 	// to make them easy to find for the DOM manipulating ajax response functions
 	// Do this just below here:
-
+	htmlTask.attr("data-id", task.id);
 
 	// STEP 14: Append htmlTask either to the `#todo-items` list or the `#completed-items` list
 	// but don't allow empty tasks
-}
+	$('#todo-items').append(htmlTask);
+};
 
 // This runs when the window is loaded
 // Similar to window.onload, but for jQuery
@@ -57,9 +58,17 @@ $(function(){
 	// STEP 9: When the DOM is ready make an ajax call to the index action with a `dataType` setting of 'json'
 	// Send an AJAX json request to the index action to get all the tasks
 	$.ajax({
+		url: '/',
+		dataType: 'json',
+		type: 'GET'
 	}).done(function(data){ //handle the json response
 			// STEP 10: For now use `console.log` in `.done()` to see the result is an array of javascript objects.
+		console.log(data);
 			// STEP 16: Rewrite the `.done()` method in step 10 so that it loops through the elements in the ajax response object and passes each to the new append task function
+		var length = data.length;
+		for (var i = 0; i < length; i++) {
+			appendTask(data[i]);
+		}
 	});
 
 	// Add a click event handler to the add item button

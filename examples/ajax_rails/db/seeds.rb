@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # STEP 6: Create basic seed data for a 5 tasks here
+tasks = Task.create([{ name: 'Clean the kitty litter.' }, { name: 'Fold laundry.'}, { name: 'Vacuum.' }, { name: 'Run the dishwasher.' }, { name: 'Pay dental bill.' }])
