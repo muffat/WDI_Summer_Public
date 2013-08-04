@@ -1,3 +1,4 @@
 // This JavaScript response will be evaluated immediately once the server receives it
 // Hide the deleted task
-alert("Complete the destroy.js.erb");
+// alert("Complete the destroy.js.erb");
+$("li[data-id=<%= @task.id %>]").remove();
