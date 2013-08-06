@@ -11,7 +11,7 @@ class Bank
     @accounts[name] += amount
   end
   def withdraw(name, amount)
-    if (@accounts[name] && (amount <= @accounts[name]) && (amount > 0))
+    if @accounts[name] && (amount <= @accounts[name]) && (amount >= 0)
       @accounts[name] -= amount
     else
       nil

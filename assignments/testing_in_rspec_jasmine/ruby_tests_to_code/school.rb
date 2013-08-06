@@ -14,7 +14,7 @@ class School
     @students[name] = gpa
   end
 
-  def average_gpa()
+  def average_gpa
     @students.values.reduce(:+).to_f / @students.count
   end
 
