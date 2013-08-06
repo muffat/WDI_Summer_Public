@@ -29,19 +29,41 @@ var numberOfClicks = 0;
 var currentId = "";
 var currentCard = "";
 
+var choice;
+
 //Code In Here gets executed once code is ready. ie hovering, clicking events//
 $(function() {
   $("#small").click(function() {
-    startGame();
+    choice = "small";
+    startGame(choice);
+    cardClick();
+    hovering();
+  });
+  $("#medium").click(function() {
+    choice = "medium";
+    startGame(choice);
+    cardClick();
+    hovering();
+  });
+  $("#large").click(function() {
+    choice = "large";
+    startGame(choice);
     cardClick();
     hovering();
   });
 });
 
 // Initializes the game and creates the board
-function startGame() {
+function startGame(choice) {
   // switch statement here to figure out which array of letters to use.
-  letters = lettersSmall;
+  if (choice === "small") {
+    letters = lettersSmall;
+  } else if (choice === "medium") {
+    letters = lettersMedium;
+  } else if (choice === "large") {
+    letters = lettersLarge;
+  }
+
   // shuffles letters in array
   letters.sort(function() {
     return 0.5 - Math.random();
@@ -67,7 +89,7 @@ function cardClick() {
         lastCard = $(this);
         lastId = lastCard.attr("id");
         lastCard.text(letters[lastId]);
-        console.log(lastId + " " + lastCard.text());
+        console.log("FIRST CARD id: " + lastId + " letter: " + lastCard.text());
       // break;
       // when there are 2 cards in play
     } else if (numberOfClicks === 2) {
@@ -75,7 +97,7 @@ function cardClick() {
         currentCard = $(this);
         currentId = currentCard.attr("id");
         currentCard.text(letters[currentId]);
-        console.log("id: " + currentId + " letter: " + currentCard.text());
+        console.log("SECOND CARD id: " + currentId + " letter: " + currentCard.text());
         if ((currentCard.text() === lastCard.text()) && (currentId !== lastId)) {
           console.log("you got a match!");
           found();

@@ -18,5 +18,5 @@ end
 post '/combine' do
 	content_type :json
 	result = params['word1']+" "+params['word2']+", from AJAX!"
-  { combined: result }.to_json
+    {combined: result}.to_json
 end
