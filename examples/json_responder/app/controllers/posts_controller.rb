@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
-
   # GET /posts
   # GET /posts.json
   def index
@@ -8,7 +6,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @posts }
+      format.json { render json: @posts, only: [:title, :body, :created_at] }
     end
   end
 
@@ -19,7 +17,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @post }
+      format.json { render json: @post, include: [:author, :comments] }
     end
   end
 

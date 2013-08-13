@@ -7,4 +7,30 @@ if (typeof Object.create !== 'function') {
 }
 
 var guitar = {
+  name: "Fender Esquire",
+  volume: 5,
+  setName: function(name) {
+    this.name = name;
+  },
+  numberOfStrings: 6,
+  breakString: function() {
+    this.numberOfStrings -= 1;
+  },
+  playRock: function() {
+    if (this.numberOfStrings === 6) {
+      this.volume = 11;
+    } else {
+      this.volume = 0;
+    }
+  },
+  restring: function() {
+    this.numberOfStrings = 6;
+    this.volume = 5;
+  },
+  playBasicRhythm: function() {
+    return "jug jigga jug jigga jug";
+  },
+  playHighStrings: function() {
+    return "meedley meedley meedley meedley meedley meedley meedley meedley meedley meedley meedley meedley MEEEEEEEEEEEEEEEE. \'And the dragon comes in the NIIIiiiiIIIiiiiIIIIIIIIiiiiiiiiiiiIIIIIIIIiiiIIGGHH\'";
+  }
 };
